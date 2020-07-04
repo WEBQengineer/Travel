@@ -32,11 +32,6 @@ export default {
       }]
     }
   }
-  // data: function () {
-  //   return {
-  //     swiperOption: {}
-  //   }
-  // }
 }
 </script>
 
