@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img class="swaper-img"  :src="item.imgUrl" />
       </swiper-slide>
       <!-- Optional controls -->
@@ -19,17 +19,15 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/e52c3e98602b90f198ec316dce253cba.jpg?thumb=1&w=2452&h=920&f=webp&q=90'
-      }, {
-        id: '0002',
-        imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/29d0a0b83843d7d1ba7a30a9400257e9.jpg?thumb=1&w=2452&h=920&f=webp&q=90'
-      }, {
-        id: '0003',
-        imgUrl: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6ef43cf9f138a7fc3a39273d7e3d13b6.jpg?thumb=1&w=2452&h=920&f=webp&q=90'
-      }]
+      }
+    }
+  },
+  props: {
+    list: Array
+  },
+  computed: {
+    showSwiper () {
+      return this.list.length
     }
   }
 }

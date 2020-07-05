@@ -2,11 +2,11 @@
   <div>
     <div class="recommend-title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of itemList" :key="item.id">
+      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
         <img class="item-img" :src="item.imgUrl" />
         <div class="item-info">
-          <p class="item-title">{{item.itemtitle}}</p>
-          <p class="item-desc">{{item.itemdesc}}</p>
+          <p class="item-title">{{item.title}}</p>
+          <p class="item-desc">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
       </li>
@@ -18,21 +18,10 @@
 export default {
   name: 'HomeRecommend',
   data () {
-    return {
-      itemList: [
-        {
-          id: '0001',
-          imgUrl: '//s.qunarzz.com/homenode/images/touchheader/package.png',
-          itemtitle: '大连圣亚海洋世界大连圣亚海洋世界大连圣亚海洋世界大连圣亚海洋世界',
-          itemdesc: '浪漫大连首站，浪漫的海洋主题乐园浪漫大连首站，浪漫的海洋主题乐园浪漫大连首站，浪漫的海洋主题乐园'
-        }, {
-          id: '0001',
-          imgUrl: '//s.qunarzz.com/homenode/images/touchheader/package.png',
-          itemtitle: '大连圣亚海洋世界',
-          itemdesc: '浪漫大连首站，浪漫的海洋主题乐园'
-        }
-      ]
-    }
+    return {}
+  },
+  props: {
+    recommendList: Array
   }
 }
 </script>

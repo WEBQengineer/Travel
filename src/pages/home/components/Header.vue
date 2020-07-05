@@ -8,7 +8,7 @@
       输入城市/景点/游玩主题
     </div>
     <div class="header-right">
-      城市
+      {{city}}
       <span class="iconfont arrow-icon">&#xe64a;</span>
     </div>
   </div>
@@ -16,12 +16,16 @@
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: String
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
+  @import '~styles/mixins.styl'
   .header
     line-height: .86rem
     background: #00bcd4
@@ -37,6 +41,8 @@ export default {
       width: 1.24rem
       text-align: center
       float: right
+      min-width: 0
+      ellipsis()
       .arrow-icon
         font-size: .24rem
     .header-input

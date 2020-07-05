@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="iconimg">
@@ -18,47 +18,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
-      iconList: [{
-        id: '0001',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/hotel.png',
-        desc: '酒店qwq请问请问我去'
-      }, {
-        id: '0002',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '机票'
-      }, {
-        id: '0003',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/train.png',
-        desc: '火车票'
-      }, {
-        id: '0002',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '机票'
-      }, {
-        id: '0003',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/train.png',
-        desc: '火车票'
-      }, {
-        id: '0002',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '机票'
-      }, {
-        id: '0003',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/train.png',
-        desc: '火车票'
-      }, {
-        id: '0002',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '机票'
-      }, {
-        id: '0003',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/train.png',
-        desc: '火车票'
-      }, {
-        id: '0002',
-        imgUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        desc: '机票'
-      }]
+      swiperOption: {
+        autoPlay: false
+      }
     }
   },
   computed: {
@@ -73,6 +35,9 @@ export default {
       })
       return pages
     }
+  },
+  props: {
+    iconList: Array
   }
 }
 </script>

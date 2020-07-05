@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="title">周末去哪儿</div>
-    <div class="itemAll" v-for="item of itemList" :key="item.id">
+    <div class="itemAll" v-for="item of weekendList" :key="item.id">
       <div class="imgCon">
         <img class="weekendimg" :src="item.imgUrl" />
       </div>
-      <p class="iteminfo" >{{item.info}}</p>
+      <p class="itemtitle" >{{item.title}}</p>
       <p class="itemdesc" >{{item.desc}}</p>
     </div>
   </div>
@@ -15,21 +15,10 @@
 export default {
   name: 'HomeWeekend',
   data () {
-    return {
-      itemList: [
-        {
-          id: '0001',
-          imgUrl: '//img1.qunarzz.com/sight/p0/2005/5d/5d51e25c5812fef6a3.water.jpg_256x160_4fec2721.jpg',
-          info: '天津之眼摩天轮',
-          desc: '华灯初上，享受别样浪漫华灯初上'
-        }, {
-          id: '0002',
-          imgUrl: '//img1.qunarzz.com/sight/p0/2005/5d/5d51e25c5812fef6a3.water.jpg_256x160_4fec2721.jpg',
-          info: '天津之眼摩天轮',
-          desc: '华灯初上，享受别样浪漫华灯初上'
-        }
-      ]
-    }
+    return {}
+  },
+  props: {
+    weekendList: Array
   }
 }
 </script>
@@ -44,11 +33,11 @@ export default {
     .imgCon
       overflow: hidden
       height: 0
-      padding-bottom: 33.9%
+      padding-bottom: 37.09%
       border-radius: .05rem
       .weekendimg
         width: 100%
-    .iteminfo
+    .itemtitle
       line-height: .5rem
       font-size: .32rem
       ellipsis()
