@@ -27,7 +27,7 @@ export default {
     }
   },
   computed: {
-    hasNoData() {
+    hasNoData () {
       return !this.list.length
     }
   },
