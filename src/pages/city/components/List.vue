@@ -73,7 +73,7 @@ export default {
   .list
     position: absolute
     overflow: hidden
-    top: 1.68rem
+    top: 1.78rem
     left: 0
     right: 0
     bottom: 0
