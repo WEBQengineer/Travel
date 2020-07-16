@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="item" 
-      v-for="(item, index) of list"
+    <div class="item"
+      v-for="(item, index) of listone"
       :key="index"
     >
       <div class="item-title border-bottom">
@@ -9,7 +9,7 @@
         {{item.title}}
       </div>
       <div v-if="item.children" class="item-children">
-        <detail-list :list="item.children"></detail-list>
+        <detail-list :listone="item.children"></detail-list>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
 export default {
   name: 'DetailList',
   props: {
-    list: Array
+    listone: Array
   }
 }
 </script>
