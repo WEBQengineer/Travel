@@ -20,7 +20,8 @@ export default {
   },
   methods: {
     handleScroll () {
-      const scrp = document.documentElement.scrollTop
+      const scrp = document.documentElement.scrollTop || 
+        document.body.scrollTop || window.pageYOffset
       if (scrp > 46) {
         let opacity = scrp / 80
         opacity = opacity > 1 ? 1 : opacity
@@ -31,10 +32,10 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
   }
 }
@@ -46,15 +47,15 @@ export default {
     position: absolute
     left: .2rem
     top: .2rem
-    width: .7rem
-    height: .7rem
-    line-height: .7rem
-    border-radius: .35rem
+    width: .72rem
+    height: .72rem
+    line-height: .72rem
+    border-radius: .36rem
     text-align: center
-    background: rgba(0, 0, 0, .8)
+    background: rgba(0, 0, 0, .5)
     .header-abs-back
       color: #fff
-      font-size: .35rem
+      font-size: .48rem
   .header-fixed
     z-index: 2
     position: fixed
