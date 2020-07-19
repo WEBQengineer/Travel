@@ -35,13 +35,15 @@ export default {
   },
   computed: {
     hasNoData () {
-      return !this.list.length
+      const coneLngth = this.list.length
+      return (this.list.length && coneLngth>0)
     }
   },
   methods: {
     handleCityClick (city) {
-      this.changeCity(city)
-      this.$router.push('/')
+      this.changeCity(city),
+      this.$router.push('/'),
+      this.keyWord = ''
     },
     ...mapMutations(['changeCity'])
   },
@@ -69,7 +71,9 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.search)
+    this.scroll = new Bscroll(this.$refs.search, {
+      click: true
+    })
   }
 }
 </script>
