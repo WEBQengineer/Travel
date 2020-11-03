@@ -6,13 +6,13 @@
     <div class="search-content" ref="search" v-show="keyWord">
       <ul>
         <li class="search-item border-bottom"
-        v-for="item of list"
-        :key="item.id"
-        @click="handleCityClick(item.name)"
-      >
-        {{item.name}}
-      </li>
-        <li class="search-item border-bottom" v-if="hasNoData">没有找到匹配数据</li>
+          v-for="item of list"
+          :key="item.id"
+          @click="handleCityClick(item.name)"
+        >
+          {{item.name}}
+        </li>
+        <li class="search-item border-bottom" v-show="hasNoData">{{this.noDataMsg}}</li>
       </ul>
     </div>
   </div>
@@ -30,13 +30,9 @@ export default {
     return {
       keyWord: '',
       list: [],
-      timer: null
-    }
-  },
-  computed: {
-    hasNoData () {
-      const coneLngth = this.list.length
-      return (this.list.length && coneLngth>0)
+      timer: null,
+      hasNoData: false,
+      noDataMsg: '没有找到'
     }
   },
   methods: {
@@ -67,9 +63,13 @@ export default {
           })
         }
         this.list = result
-      }, 100)
+        this.hasNoData = !result.length
+        this.noDataMsg = '没有搜索到数据'
+      }, 500)
+      this.hasNoData = true
+      this.noDataMsg = '正在搜索……'
     }
-  },
+  }, 
   mounted () {
     this.scroll = new Bscroll(this.$refs.search, {
       click: true
@@ -87,7 +87,6 @@ export default {
     .search-input
       height: 100%
       width: 100%
-      line-height: 100%
       box-sizing: border-box
       text-align: center
       padding: 0 .1rem

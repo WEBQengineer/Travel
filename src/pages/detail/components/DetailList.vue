@@ -8,8 +8,10 @@
         <span class="item-title-icon"></span>
         {{item.title}}
       </div>
-      <div v-if="item.children" class="item-children">
-        <detail-list :listone="item.children"></detail-list>
+      <div class="item-children" v-if="item.children">
+        <detail-list
+          :listone="item.children"
+        ></detail-list>
       </div>
     </div>
   </div>

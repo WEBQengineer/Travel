@@ -1,8 +1,13 @@
 <template>
   <div>
     <city-header></city-header>
+    <div @click="showCityList" class="testButton">
+      <button>
+        这个用来测试异步加载组件
+      </button>
+    </div>
     <city-search :cities="cities"></city-search>
-    <city-list :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
+    <city-list v-if="sclOne" :cities="cities" :hotCities="hotCities" :letter="letter"></city-list>
     <city-alphabet
       :cities="cities"
       @change="handleLetterClick"
@@ -13,7 +18,7 @@
 <script>
 import CityHeader from './components/Header'
 import CitySearch from './components/Search'
-import CityList from './components/List'
+// import CityList from './components/List'
 import CityAlphabet from './components/Alphabet'
 import axios from 'axios'
 export default {
@@ -21,7 +26,7 @@ export default {
   components: {
     CityHeader,
     CitySearch,
-    CityList,
+    CityList:() => import('./components/List'),
     CityAlphabet
   },
   mounted () {
@@ -41,18 +46,25 @@ export default {
     },
     handleLetterClick (letter) {
       this.letter = letter
+    },
+    showCityList(){
+      this.sclOne = true
+      console.log('123')
     }
   },
   data () {
     return {
       cities: {},
       hotCities: [],
-      letter: ''
+      letter: '',
+      sclOne:false
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-
+  .testButton
+    height: .8rem
+    line-height: .8rem
 </style>
